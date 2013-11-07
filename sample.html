@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title>sample</title>
+  <script src="./jquery-1.8.3.min.js"></script>
+  <script>
+    jQuery(function($) {
+      LANGS = [".en", ".ja", ".kr", ".km"]
+      $(".toggle-button").click(function() {
+        targetClass = LANGS[($(".contents .shown").data("lang-id") + 1) % 4];
+        $(".contents div" + targetClass).addClass("shown").show();
+        $(".contents div:not(" + targetClass + ")").removeClass("shown").hide();
+      })
+    });
+  </script>
+  <style>
+    .body {
+      background-color: #ffffee;
+    }
+
+    .contents {
+      font-size: 60pt;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    .contents .toggle-button {
+      width: 100px;
+    }
+  </style>
+</head> 
+<body>
+<div class="contents" data-click-count=0>
+  <input type="button" class="toggle-button" value="Change" />
+  <div class="en shown" data-lang-id="0">
+    Sleepy
+  </div>
+  <div class="ja" style="display: none;" data-lang-id="1">
+    ねむい
+  </div>
+  <div class="kr" style="display: none;" data-lang-id="2">
+    졸리는
+  </div>
+  <div class="km" style="display: none;" data-lang-id="3">
+    ងងុយ
+  </div>
+</div>
+</body>
+</html>
